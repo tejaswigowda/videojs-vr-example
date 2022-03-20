@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>videojs-vr Demo</title>
+   <link href="./dist/video.js/dist/video-js.css" rel="stylesheet">
+   <link href="./dist/videojs-vr.css" rel="stylesheet">
+</head>
+<body style='margin:0;overflow:hidden'>
+  <video style="width:100vw;height:100vh" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline>
+    <source src="./eagle-360.mp4" type="video/mp4">
+  </video>
+  <ul>
+    <li><a href="../">return to main example</a></li>
+  </ul>
+  <script src="./dist/video.js/dist/video.js"></script>
+  <script src="./dist/videojs-vr.js"></script>
+  <script>
+    (function(window, videojs) {
+      var player = window.player = videojs('videojs-vr-player');
+      player.mediainfo = player.mediainfo || {};
+      player.mediainfo.projection = '360';
+
+      // AUTO is the default and looks at mediainfo
+      var vr = window.vr = player.vr({projection: 'AUTO', debug: true, forceCardboard: false});
+    }(window, window.videojs));
+  </script>
+  <style>
+  .video-js .vjs-big-vr-play-button{
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+  }
+  </style>
+</body>
+</html>
